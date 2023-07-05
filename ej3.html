@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+	<meta charset="UTF-8">
+	<title>Sushi Fresco</title> 
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<body>
+
+	<div id="contenedor">
+	<header>
+		<h1><span class="titulo">Ejercicio 3</span></h1>
+		<h2><span class="subtitulo">Tema 2</span></h2>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="html.html">Inicio</a></li>
+			<li><a href="ej1.html">Ejercicio 1</a></li>
+			<li><a href="ej2.html">Ejercicio 2</a></li>
+			<li><a href="ej3.html">Ejercicio 3</a></li>
+		</ul>
+	</nav>
+
+	<section class="Platos">
+		<img src="img/Plato3.jpg" alt="Platos">
+	</section>
+
+	<article class="ej3art">
+			<h2>Consigna del ejercicio 3</h2>
+			<p>Se necesita un programa para verificar la cantidad de platos de sushi consumidos por personas. El programa debe pedir al usuario el nombre y la cantidad de platos consumidos, asegurándose de que sea un número mayor a 0. Al ingresar "fin" como nombre, se finaliza el programa.
+			<br>
+			El programa debe mostrar en la página el nombre y cantidad de platos de la persona que más y menos consumió, así como el promedio de platos consumidos.
+			<br>
+			Agregar dos elementos con eventos: uno para calcular cuántos platos por encima del promedio consumieron las personas de mayor consumo y mostrarlo con un color, y otro para calcular cuántos platos consumió la persona que menos consumió (considerando un 5% del consumo) y mostrarlo con otro color. 
+			<br>
+			Si se ingresa "fin" al inicio, se mostrará un mensaje indicando que no se ingresó ningún dato válido, tanto en el programa principal como en los eventos.</p>
+	</article>
+
+	
+
+	<p class="display">
+	<script>
+		let persona, platos, min, max, minCons, maxCons, suma = 0, prom, cantCons = 0, diferencia, consumo; 
+		let bandera = false;
+
+		do{
+			/* prompt para que me pregunte el nombre y la validacion */
+			persona = prompt('Ingrese el nombre de la persona', '');
+			while(persona == '' || persona == null || !isNaN(persona)){
+				persona = prompt('ERROR | Ingrese el nombre de la persona', '');
+			}
+			/* prompt para que me pregunte la cantidad de platos consumidos y validacion */
+			if(persona != 'fin' && persona != 'Fin' && persona != 'FIN'){
+				platos = Number(prompt('Ingrese la cantidad de platos consumidos'), '');
+				while(platos <= 0 || platos > 17 || isNaN(platos)){
+					platos = Number(prompt('ERROR | Ingrese una cantidad de platos validos (max 17)'), '');
+				}
+			
+				if(!bandera){
+					min = platos;
+					max = platos;
+					minCons = persona;
+					maxCons = persona;
+					bandera = true;
+				}
+
+				if(platos < min){
+					min = platos;
+					minCons = persona
+				}
+
+				if(platos > max){
+					max = platos;
+					maxCons = persona
+				}
+
+				cantCons++;
+				suma += platos;
+			}
+
+		}while(persona != 'fin' && persona != 'Fin' && persona != 'FIN')
+
+		prom = suma / cantCons; //Calculo del promedio
+
+		diferencia = max - prom; //Calculo de la diferencia entre el que más consumido y el promedio
+
+		consumo = min * 5 / 100; 
+
+		/* escribir resultado */
+		if(!bandera && (persona == 'fin' || persona == 'Fin' || persona == 'FIN')){
+			document.write('No se ingresó ningún dato válido');
+		}else{
+			document.write('persona que menos consumio: ' + minCons + ' (' + min + ') <br>' + 'persona que más consumio: ' + maxCons + ' (' + max + ') <br> Promedio de platos consumidos: ' + prom );
+		}
+
+	</script>
+	</p>
+
+	<div class="resultados"> 
+
+		<h3 id="show1" class="showClass">--</h3>
+		<h3 id="show2" class="showClass">--</h3>
+	</div>
+
+	<div class="botones">
+
+		<button class="boton" onclick="
+
+			let res1 = document.getElementById('show1');
+
+			if(!bandera && (persona == 'fin' || persona == 'Fin' || persona == 'FIN')){
+				res1.innerHTML = 'No se ingresó ningún dato válido' ;	
+			}else{
+				res1.innerHTML = diferencia;	
+			}
+
+			res1.style['color'] = 'green';
+
+		">Calcular diferencia entre el consumo maximo y el promedio</button>
+
+		<button class="boton" onclick="
+
+			let res2 = document.getElementById('show2');
+
+			if(!bandera && (persona == 'fin' || persona == 'Fin' || persona == 'FIN')){
+				res2.innerHTML = 'No se ingresó ningún dato válido' ;	
+			}else{
+				res2.innerHTML = consumo + '(Total: ' + (min + consumo) + ')';
+			}
+
+			res2.style['color'] = 'red';
+
+		">Calcular total del consumo minimo</button>
+		
+	</div>
+
+	<footer>
+<p style="color: black"> Para más información contactar a:  <a href="mailto:rogonzalez2033@gmail.com"> rogonzalez2033@gmail.com</a>
+		</p>
+		 <p>González Romina Alejandra</p>
+  		<p>Turno Mañana</p>
+	</footer>
+</div>
+</body>
+</html> 

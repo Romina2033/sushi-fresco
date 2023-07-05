@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+	<meta charset="UTF-8">
+	<title>Segundo Parcial</title> 
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<body>
+
+	<div id="contenedor">
+	<header>
+		<h1><span class="titulo">Ejercicio 2</span></h1>
+		<h2><span class="subtitulo">Tema 2</span></h2>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="htlm.html">Inicio</a></li>
+			<li><a href="ej1.html">Ejercicio 1</a></li>
+			<li><a href="ej2.html">Ejercicio 2</a></li>
+			<li><a href="ej3.html">Ejercicio 3</a></li>
+		</ul>
+	</nav>
+
+	<section class="Platos">
+		<img src="img/Plato2.jpg" alt="Platos">
+	</section>
+
+	<article>
+			<h2>Consigna del ejercicio 2</h2>
+			<p>Desarrollar un programa para coordinar el servicio de provisión de alimentos al que asisten 12 personas. El programa le pregunta al usuario qué sushi solicitó cada persona. Hay tres opciones de sushi: Nigiri, Maki y Temaki. Verificar que los datos ingresados sean válidos. Luego calcular el porcentaje de personas que solicitaron el Nigiri, el porcentaje de personas que solicitaron Maki y el porcentaje de personas que solicitaron Temaki. Mostrar los resultados en la página. Si alguno de los porcentajes es 0% en lugar de escribir el número se debe escribir un mensaje que diga “Nadie solicitó x” (reemplazando por el sushi que corresponda).</p>
+	</article>
+
+	<p class="display">
+		<script>
+
+			let menu, contNigi = 0, contMaki = 0, contTema = 0, porcNigi, porcMaki, porcTema;
+
+			for(i = 1; i <= 12; i++){ 
+				menu = prompt('Elija sushi N°' + i + ' | Opciones: nigiri, maki o temaki'); /* prompt para que me pregunte que tipo de sushi desea*/
+				while(menu != 'nigiri' && menu != 'Nigiri' && menu != 'NIGIRI' && menu != 'maki' && menu != 'Maki' && menu != 'MAKI' && menu != 'temaki' && menu != 'Temaki' && menu != 'TEMAKI'){
+					menu = prompt('ERROR | Elija el menú N°' + i + ' | Opciones: nigiri, maki o temaki'); /* prompt para que valide si elijo alguna de las 3 opciones, si no es asi lanzara error */
+				} 
+
+				if(menu == 'nigiri' || menu == 'Nigiri' || menu == 'NIGIRI'){
+					contNigi++;
+				}else if(menu == 'maki' || menu == 'Maki' || menu == 'MAKI'){
+					contMaki++;
+				}else if(menu == 'temaki' || menu == 'Temaki' || menu == 'TEMAKI'){
+					contTema++;
+				}
+			}
+
+			/* calcular porcentaje */
+			porcNigi = Math.round(contNigi / 12 * 100);  
+			porcMaki = Math.round(contMaki / 12 * 100);
+			porcTema = Math.round(contTema / 12 * 100);
+
+			if(porcNigi == 0){
+				document.write('Nadie solicitó Nigiri <br>'); /* escribir el resultado final */
+			}else{
+				document.write('Porcentaje de personas que pidieron Nigiri: ' + porcNigi + '% (' + contNigi + ' personas) <br>');
+			}
+
+			if(porcMaki == 0){
+				document.write('Nadie solicitó Maki <br>');
+			}else{
+				document.write('Porcentaje de personas que pidieron Maki: ' + porcMaki + '% (' + contMaki + ' personas) <br>');
+			}
+
+			if(porcTema == 0){
+				document.write('Nadie solicitó Temaki');
+			}else{
+				document.write('Porcentaje de personas que pidieron Temaki: ' + porcTema + '% (' + contTema + ' personas) <br>');
+			}
+
+		</script>
+	</p>
+
+	<footer>
+		<p style="color: black"> Para más información contactar a:  <a href="mailto:rogonzalez2033@gmail.com"> rogonzalez2033@gmail.com</a>
+		</p>
+		 <p>González Romina Alejandra</p>
+  		<p>Turno Mañana</p>
+	</footer>
+</div>
+</body>
+</html> 

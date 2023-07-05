@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es"> 
+<head>
+	<meta charset="UTF-8">
+	<title>Segundo Parcial</title> 
+	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<body>
+
+	<div id="contenedor">
+	<header>
+		<h1><span class="titulo">Ejercicio 1</span></h1>
+		<h2><span class="subtitulo">Tema 2</span></h2>
+	</header>
+
+	<nav>
+		<ul>
+			<li><a href="html.html">Inicio</a></li>
+			<li><a href="ej1.html">Ejercicio 1</a></li>
+			<li><a href="ej2.html">Ejercicio 2</a></li>
+			<li><a href="ej3.html">Ejercicio 3</a></li>
+		</ul>
+	</nav>
+<section class="Platos">
+		<img src="img/Plato1.jpg" alt="Platos">
+	</section>
+	<article>
+			<h2>Consigna del ejercicio 1</h2>
+			<p>Un grupo de 12 personas llega a pedir mesa. Haz un programa que solicite el nombre de cada persona y en qué mesa desean sentarse, ya sea en la opción A o B. Si alguien ingresa un número como nombre o elige una opción incorrecta para la mesa, se mostrará el mensaje 'ERROR | Ingrese un nombre válido' o 'ERROR | Ingrese mesa A o B'. El objetivo es asegurarse de obtener nombres válidos y una selección correcta de mesas para organizar el espacio de manera adecuada.</p>
+	</article>
+	
+
+	<div class='resultado1'> 
+
+		<h3 id='show1'>--</h3>
+		<h3 id='show2'>--</h3>
+	</div>
+	<p>
+		<script>
+const nombres = [];
+const mesas = { A: 0, B: 0 };
+
+for ( i = 1; i <= 12; i++) { /* prompt para que me pregunte el nombre */
+   nombre = prompt('Ingrese el nombre de la persona N°' + i,'');
+
+  while (!nombre || !isNaN(nombre)) { /* prompt para validar que no sea un numero */
+    nombre = prompt('ERROR | ingrese nombre de la persona');
+  }
+
+  let mesa = prompt('¿Desea la mesa A o B?').toUpperCase(); /* prompt para que me pregunte que mesa deseo */
+
+  
+  while (mesa !== 'A' && mesa !== 'B') { /* prompt para validar que no sea un numero o otra letra que no sea A o B */
+    mesa = prompt('ERROR | ingrese mesa A o B');
+  }
+
+  nombres.push(nombre);
+  mesas[mesa]++;
+}
+ 
+/* calcular el resultado */
+document.getElementById("show1").textContent = 'Total de personas que comen en la mesa A: ' + mesas.A + ' personas';
+
+document.getElementById("show2").textContent = 'Total de personas que comen en la mesa B: ' + mesas.B + ' personas';
+
+if (mesas.A === 0) {
+  document.getElementById("show3").textContent = 'Nadie se sentó en la mesa A';
+}
+
+if (mesas.B === 0 && mesas.A !== 0) {
+  document.getElementById("show3").textContent = 'Nadie se sentó en la mesa B';
+}
+
+		</script>
+	</p>
+
+	<footer>
+		<p style="color: black"> Para más información contactar a:  <a href="mailto:rogonzalez2033@gmail.com"> rogonzalez2033@gmail.com</a>
+		</p>
+		 <p>González Romina Alejandra</p>
+  		<p>Turno Mañana</p>
+	</footer> 
+</div>
+</body>
+</html> 
